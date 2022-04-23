@@ -1,5 +1,6 @@
-<h2>Log in</h2>
+<h2>ログイン</h2>
 
+<h4>会員の方はこちらからログイン</h4>
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :email %><br />
@@ -19,8 +20,10 @@
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in" %>
+    <%= f.submit "ログイン" %>
   </div>
 <% end %>
 
-<%= render "publics/shared/links" %>
+
+<h2>会員登録がお済みでない方</h2>
+<%= render "public/shared/links" %>から新規登録を行なってください。
