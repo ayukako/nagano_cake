@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
   def show
+    @customer = user
   end
 
   def edit

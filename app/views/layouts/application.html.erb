@@ -19,7 +19,7 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav ml-auto">
-            <% if customer_signed_in? %>
+            <% if current_customer %>
             <li class="nav-item">
               <%= link_to "マイページ", public_customers_show_path(current_user.id), class: 'nav-link text-dark' %>
             </li>
@@ -31,6 +31,22 @@
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_public_customers_sign_out_path(current_user.id), class: 'nav-link text-dark' %>
+            </li>
+            <% elsif current_admin%>
+             <li class="nav-item">
+              <%= link_to "商品一覧", "#", class: 'nav-link text-dark' %>
+            </li>
+             <li class="nav-item">
+              <%= link_to "会員一覧", "#",  class: 'nav-link text-dark' %>
+            </li>
+             <li class="nav-item">
+              <%= link_to "注文履歴一覧", "#", class: 'nav-link text-dark' %>
+            </li>
+             <li class="nav-item">
+              <%= link_to "ジャンル一覧", "#", class: 'nav-link text-dark' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
             </li>
             <% else %>
             <li class="nav-item">
@@ -45,9 +61,7 @@
             <li class="nav-item">
               <%= link_to "ログイン", new_customer_session_path, class: 'nav-link text-dark' %>
             </li>
-             <li class="nav-item">
-              <%= link_to "管理者ログアウト", destroy_admin_session_path, method: :delete, class: 'nav-link text-dark' %>
-            </li>
+
             <% end %>
             </ul>
           </div>
