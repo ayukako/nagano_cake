@@ -18,7 +18,7 @@ def after_sign_out_path_for(resource)
   when Customer
    public_items_index_path
   end
-  protected
+  protected_methods
 end
 
 end
