@@ -21,7 +21,7 @@
             <ul class="navbar-nav ml-auto">
             <% if current_customer %>
             <li class="nav-item">
-              <%= link_to "マイページ", public_customer_path(current_user.id), class: 'nav-link text-dark' %>
+              <%= link_to "マイページ", public_customer_path(current_customer.id), class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to '商品一覧', public_items_path, class: 'nav-link text-dark' %>
@@ -30,7 +30,7 @@
               <%= link_to 'カート', public_cart_items_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
-              <%= link_to "ログアウト", destroy_public_customers_sign_out_path(current_user.id), class: 'nav-link text-dark' %>
+              <%= link_to "ログアウト", public_session_path(current_customer.id), class: 'nav-link text-dark' %>
             </li>
             <% elsif current_admin%>
              <li class="nav-item">

@@ -3,10 +3,12 @@
 class Public::RegistrationsController < Devise::RegistrationsController
 
   def after_sign_in_path_for(resource)
-    public_customer_path
+    root_path
   end
 
-
+  def after_sign_out_path_for(resource)
+    new_public_session_path
+  end
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
