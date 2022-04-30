@@ -1,2 +1,14 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<h1>商品詳細</h1>
+
+
+  <h4>商品名</h4>
+  <p><%=  @item.name %></p>
+  <h4>商品説明</h4>
+  <p><%= @item.introduction %></p>
+  <h4>ジャンル</h4>
+  <p><%=  @item.genre.name %></p>
+  <h4>税抜価格</h4>
+  <p><%=  @item.price %></p>
+  <h4>販売ステータス</h4>
+
+  <%= link_to "編集する", edit_admin_item_path(@item.id), class: "btn btn-sm btn-success" %>

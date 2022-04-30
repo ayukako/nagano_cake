@@ -37,7 +37,7 @@
             </li>
             <% elsif current_customer %>
             <li class="nav-item">
-              <%= link_to "マイページ", public_customer_path(current_customer.id), class: 'nav-link text-dark' %>
+              <%= link_to "マイページ", public_customers_path, class: 'nav-link text-dark' %>
             </li>
             <li class="nav-item">
               <%= link_to '商品一覧', public_items_path, class: 'nav-link text-dark' %>

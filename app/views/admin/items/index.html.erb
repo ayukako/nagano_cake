@@ -2,7 +2,8 @@
 
 <%= link_to "新規作成", new_admin_item_path %>
 
- <thead>
+<table>
+  <thead>
     <tr>
       <th></th>
       <th>商品ID</th>
@@ -12,6 +13,23 @@
       <th>販売ステータス</th>
     </tr>
   </thead>
+  <tbody>
+    <% @items.each do |item| %>
+      <tr>
+        <td></td>
+        <td><%= item.id %></td>
+        <td>
+          <%= link_to admin_item_path(item) do %>
+            <span><%= item.name %></span>
+          <% end %>
+        </td>
+        <td>
+          <span><%= item.price %></span>
+        </td>
+        <td></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-  <% @items.each do |item| %>
-  <% end %>
