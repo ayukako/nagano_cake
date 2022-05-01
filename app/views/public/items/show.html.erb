@@ -1,2 +1,11 @@
-<h1>Public::Items#show</h1>
-<p>Find me in app/views/public/items/show.html.erb</p>
+<h2><%= @item.name %></h2>
+<p><%= @item.introduction %></p>
+
+<h2>¥<%= @item.price %></h2><h4>(税込）</h4>
+
+<%= form_with model: @cart_item, url: public_cart_items_path do |f| %>
+  <%= f.select :amount, *[1..10] %>
+  <%= f.hidden_field :customer_id, :value => current_customer.id %>
+  <%= f.hidden_field :item_id, :value => @item.id %>
+  <%= f.submit "カートに入れる" %>
+<% end %>

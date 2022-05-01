@@ -15,7 +15,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
   namespace :admin do
-    resources :sessions, only: [:new, :create, :destroy]
     resources :items, except: [:destroy]
     resources :genres, except: [:new, :show, :destroy]
     resources :customers, except: [:new, :create, :destroy]
@@ -29,8 +28,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :public do
     resources :items, only: [:index, :show]
-    resources :registraitions, only: [:new, :create]
-    resources :sessions, only: [:new, :create, :destroy]
     resource :customers, only: [:show, :edit, :update]
     resources :cart_items, only: [:index, :update, :create, :destroy]
     resources :orders, only: [:new, :create, :index, :show]
