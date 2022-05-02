@@ -1,6 +1,6 @@
 <h1>ショッピングカート</h1>
 
-<%= link_to "カートを空にする", public_cart_items_path,　method: :destroy_all,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %>
+<%= link_to "カートを空にする", destroy_all_public_cart_items_path, method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %>
 
 <table>
   <thead>
@@ -14,13 +14,17 @@
       <tr>
         　<td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.price %></td>
-          <td><%= form_with model: cart_item, url: public_cart_items_path do |f| %>
+          <td>
+            <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id) do |f| %>
               <%= f.select :amount, *[1..10] %>
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
-              <%= f.hidden_field :item_id, :value => cart_item.item_id %></td>
-              <%= link_to "更新", public_cart_items_path(cart_item.id) %>
-              <% end %>
+              <%= f.hidden_field :item_id, :value => cart_item.item_id %>
+              <%= f.submit "更新" %>
+            <% end %>
+          </td>
           <td><%= cart_item.item.price*cart_item.amount %></td>
+          <td><%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>
+
       </tr>
 
   <% end %>

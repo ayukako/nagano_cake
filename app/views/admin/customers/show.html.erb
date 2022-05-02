@@ -14,15 +14,13 @@
     </tr>
   </thead>
   <tbody>
-    <% @customer.each do |customer| %>
       <tr>
-        <td><%= customer.id %></td>
-        <td><%= customer.last_name %><%= customer.first_name %></td>
-        <td><<%= customer.last_name_kana %><%= customer.first_name_kana %><</td>
-        <td><%= customer.postal_code %></td>
-        <td><%= customer.address %></td>
-        <td><%= customer.telephone_number %></td>
-        <td><%= customer.email %></td>
-      <% end %>
+        <td><%= @customer.id %></td>
+        <td><%= @customer.last_name %><%= @customer.first_name %></td>
+        <td><<%= @customer.last_name_kana %><%= @customer.first_name_kana %><</td>
+        <td><%= @customer.postal_code %></td>
+        <td><%= @customer.address %></td>
+        <td><%= @customer.telephone_number %></td>
+        <td><%= @customer.email %></td>
   </tbody>
 </table>
