@@ -28,19 +28,28 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
   namespace :public do
     resources :items, only: [:index, :show]
-    resource :customers, only: [:show, :edit, :update]
+    resource :customers, only: [:show, :edit, :update] do
+      collection do
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
     resources :cart_items, only: [:index, :update, :create, :destroy] do
       collection do
         delete :destroy_all
       end
     end
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :orders, only: [:new, :create, :index, :show] do
+      collection do
+        post :confirm
+        get :thanks
+      end
+    end
     resources :addresses, except: [:new, :show]
   end
   namespace :public do
     get 'homes/top'
     get 'homes/about'
-    # delete 'cart_items' => 'cart_items#destroy_all', as: "cart_items_destroy_all"
    end
 
 end
