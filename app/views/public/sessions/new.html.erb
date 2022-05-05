@@ -1,7 +1,12 @@
 <h2>ログイン</h2>
 
+<h3><%= flash[:notice] %></h3>
+<% @customer.errors.full_messages.each do |message| %>
+  <%= message %>
+<% end %>
+
 <h4>会員の方はこちらからログイン</h4>
-<%= form_with model: @customer, url: customer_session_path, local: true do |f| %>
+<%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <div class="field">
     <%= f.label :メールアドレス %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
