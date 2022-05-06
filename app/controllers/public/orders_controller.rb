@@ -8,9 +8,8 @@ class Public::OrdersController < ApplicationController
     if params[:select_address] == 1
     elsif params[:select_address] == 2
     else params[:select_address] == 3
-
     end
-
+    redirect_to confirm_public_orders_path
   end
 
   def thanks
@@ -26,17 +25,18 @@ class Public::OrdersController < ApplicationController
       #登録済みの住所を保存する処理
     else params[:select_address] == 3
     end
-    
+
   end
 
   def index
   end
 
   def show
+    @order = Order.find(params[:id])
   end
 
   def order_params
-  params.require(:order).permit(:payment_method, :postal_code, :address, :name)
+  params.require(:order).permit(:payment_method, :postal_code, :address, :name, :order_status)
   end
 
 end
