@@ -9,25 +9,31 @@
       <th>小計</th>
   </thead>
   <tbody>
+  <% @total = 0 %>
   <% @cart_items.each do |cart_item| %>
       <tr>
         　<td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.price %></td>
-          <td><%= cart_item.item.price*cart_item.amount %></td>
+          <td><%= @total = @total + cart_item.item.price*cart_item.amount %></td>
   <% end %>
   </tbody>
 </table>
 <table>
   <thead>
       <th>送料</th>
+      <th><%= @order.postage %></th>
       <th>商品合計</th>
+      <th><%= @total %></th>
       <th>請求額</th>
+      <th><%= @order.postage + @total %></th>
   </thead>
   <tbody>
 </table>
 
 <h4>支払い方法</h4>
+<%= @order.payment_method %>
 
 <h4>お届け先</h4>
+<%= @order.address %>
 
 <%= link_to "注文を確定する", thanks_public_orders_path %>
