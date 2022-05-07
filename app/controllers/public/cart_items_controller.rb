@@ -22,18 +22,20 @@ class Public::CartItemsController < ApplicationController
   end
 
   def create
-    @cart_item = CartItem.new(cart_item_params)
-    if cart_item = CartItem.find_by(item_id: @cart_item.item_id)
-      cart_item.update(amount: cart_item.amount + @cart_item.amount)
-    else cart_item = CartItem.find_by(item_id: @cart_item.item_id)
-      @cart_item.save
+    if CartItem.find_by(customer_id: current_customer.id, item_id: cart_item_params[:item_id])
+      cart_item = CartItem.find_by(customer_id: current_customer.id, item_id: cart_item_params[:item_id])
+      cart_item.update(amount: cart_item.amount + cart_item_params[:amount].to_i)
+    else
+     @cart_item = CartItem.new(cart_item_params)
+     @cart_item.customer_id = current_customer.id
+     @cart_item.save
     end
     redirect_to public_cart_items_path
   end
 
   private
   def cart_item_params
-      params.require(:cart_item).permit(:item_id, :amount, :customer_id)
+      params.require(:cart_item).permit(:item_id, :amount)
   end
 
 end

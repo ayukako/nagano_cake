@@ -10,7 +10,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @customer.each do |customer| %>
+    <% @customers.each do |customer| %>
       <tr>
         <td></td>
         <td><%= customer.id %></td>
@@ -23,7 +23,7 @@
           <span><%= customer.email %></span>
         </td>
         <td>
-          <% if @customer.is_active == true %> <p>有効</p>
+          <% if customer.is_active == true %> <p>有効</p>
           <% else %> <p>退会</p>
           <% end %>
         </td>
