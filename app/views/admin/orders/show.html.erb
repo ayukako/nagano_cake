@@ -1,7 +1,22 @@
-<h1>注文履歴一覧</h1>
+<h1>注文履歴詳細</h1>
 
+<table>
+  <thead>
+      <th>購入者</th>
+      <th>注文日</th>
+      <th>配送先</th>
+      <th>支払い方法</th>
+      <th>注文ステータス</th>
+  </thead>
+  <tbody>
+    　<th><%= @order.customer.last_name + @order.customer.first_name %></th>
+    　<th><%= @order.created_at %></th>
+    　<th><%= @order.address %></th>
+    　<th><%= @order.payment %></th>
+    　<th><%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
+            <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
+            <%= f.submit "更新" , class: "btn btn-outline-success" %>
+            <% end %></th>
+　 </tbody>
+　</table>
 
-    <%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
-    <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
-    <%= f.submit "更新" , class: "btn btn-outline-success" %>
-    <% end %>

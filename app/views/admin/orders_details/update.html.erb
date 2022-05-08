@@ -1,2 +1,16 @@
-<h1>Admin::OrdersDetails#update</h1>
-<p>Find me in app/views/admin/orders_details/update.html.erb</p>
+<h1>注文履歴詳細</h1>
+
+<table>
+  <tr>
+    <th>購入者</th>
+    <th>購入日時</th>
+    <th>配送先</th>
+    <th>注文ステータス</th>
+  </tr>
+  <th><%= order.customer.last_name%><%= order.customer.first_name %></th>
+  <th><%= order.created_at %></th>
+  <th><%= order. %></th>
+  <th><%= order.status %></th>
+
+</table>
+
