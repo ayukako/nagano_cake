@@ -13,7 +13,11 @@
   <tbody>
     　<th><%= @order.created_at %></th>
     　<th><%= @order.address %></th>
-    　<th><%= @order.item %></th>
+    　<th>
+  　     <%= @order.order_details.each do |order_detail| %>
+          <%= order_detail.item.name %>
+        <% end %>
+      </th>
     　<th><%= @order.payment %></th>
     　<th><%= @order.status %></th>
       <th><%= @order.postage + @total %></th>
