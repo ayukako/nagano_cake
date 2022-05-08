@@ -1,8 +1,11 @@
-<h1>商品一覧</h1>
+<div class= "row" >
+  <div class= "container">
 
-<%= link_to "新規作成", new_admin_item_path %>
+<h2>商品一覧</h2>
 
-<table>
+<button type="button" class="btn btn-outline-primary"<%= link_to "新規作成", new_admin_item_path %></button>
+
+<table class="table">
   <thead>
     <tr>
       <th></th>
@@ -27,7 +30,10 @@
           <span><%= item.price %></span>
         </td>
         <td></td>
-        <td></td>
+        <td><% if item.is_active == true %> <p>販売中</p>
+          <% else %> <p>販売停止中</p>
+          <% end %></td>
+
       </tr>
     <% end %>
   </tbody>
