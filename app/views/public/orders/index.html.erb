@@ -11,14 +11,21 @@
       <th>注文詳細</th>
   </thead>
   <tbody>
-    　<th><%= @order.created_at %></th>
-    　<th><%= @order.address %></th>
+    <% @order.each do |order| %>
     　<th>
-  　     <%= @order.order_details.each do |order_detail| %>
+    　 <%= order.created_at.strftime('%Y/%m/%d') %></th>
+    　<th><%= order.address %></th>
+    　<th>
+  　   <% order.order_details.each do |order_detail| %>
           <%= order_detail.item.name %>
         <% end %>
       </th>
-    　<th><%= @order.payment %></th>
-    　<th><%= @order.status %></th>
-      <th><%= @order.postage + @total %></th>
-      <th><%= link_to "表示する", public_order_path %></th>
+    　<th><%= order.payment %></th>
+    　<th><%= order.order_status %></th>
+      <th><%= order.postage %></th>
+      <th><%= link_to "表示する", public_order_path(order.id) %></th>
+
+      <% end %>
+
+      </tbody>
+    </table>

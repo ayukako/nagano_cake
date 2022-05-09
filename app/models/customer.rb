@@ -6,7 +6,7 @@ class Customer < ApplicationRecord
 
 
   has_many :cart_items, dependent: :destroy
-  has_many :orders
+  has_many :orders, dependent: :destroy
   has_many :addresses,dependent: :destroy
 
   def active_for_authentication?

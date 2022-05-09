@@ -14,6 +14,7 @@
       <tr>
         　<td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.amount %></td>
           <td><%= @total = @total + cart_item.subtotal %></td>
   <% end %>
   </tbody>
