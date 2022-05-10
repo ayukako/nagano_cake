@@ -4,39 +4,46 @@
 
 <h2><%= @customer.last_name %><%= @customer.first_name %>さんの会員詳細</h2>
 
-<thead>
-    <ul>
-      <li>会員ID<%= @customer.id %></li>
-    </ul>
-    <ul>
-      <li>氏名<%= @customer.last_name %><%= @customer.first_name %></li>
-    </ul>
-    <ul>
-      <li>フリガナ<%= @customer.last_name_kana %><%= @customer.first_name_kana %></li>
-    </ul>
-    <ul>
-      <li>郵便番号<%= @customer.postal_code %></li>
-    </ul>
-    <ul>
-      <li>住所<%= @customer.address %></li>
-    </ul>
-    <ul>
-      <li>電話番号<%= @customer.telephone_number %></li>
-    </ul>
-    <ul>
-      <li>メールアドレス<%= @customer.email %></li>
-    </ul>
-    <ul>
-      <li>会員ステータス
-          <% if @customer.is_active == true %> <p>有効</p>
-          <% else %> <p>退会</p>
-          <% end %></li>
-    </ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">会員ID</li>
+  <li class="list-group-item"><%= @customer.id %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">氏名</li>
+  <li class="list-group-item"><%= @customer.last_name %><%= @customer.first_name %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">フリガナ</li>
+  <li class="list-group-item"><%= @customer.last_name_kana %><%= @customer.first_name_kana %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">郵便番号</li>
+  <li class="list-group-item"><%= @customer.postal_code %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">住所</li>
+  <li class="list-group-item"><%= @customer.address %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">電話番号</li>
+  <li class="list-group-item"><%= @customer.telephone_number %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">メールアドレス</li>
+  <li class="list-group-item"><%= @customer.email %></li>
+</ul>
+<ul class="list-group list-group-horizontal">
+  <li class="list-group-item">会員ステータス</li>
+  <li class="list-group-item"><% if @customer.is_active == true %> <p>有効</p>
+                                <% else %> <p>退会</p>
+                              <% end %></li>
+</ul>
+
 
   </thead>
 
 </div>
 </div>
 
-  <%= link_to "編集する", edit_admin_customer_path %>
-  <%= link_to "注文履歴一覧を見る",admin_homes_top_path %>
+  <button type="button" class="btn btn-outline-primary"><%= link_to "編集する", edit_admin_customer_path %></button>
+  <button type="button" class="btn btn-outline-primary"><%= link_to "注文履歴一覧を見る",admin_homes_top_path %></button>

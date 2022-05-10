@@ -1,3 +1,8 @@
+
+<div class='container'>
+<div class='row'>
+<div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+
 <h2><%= @item.name %></h2>
 <%= image_tag @item.image, size: "200x200" %>
 <p><%= @item.introduction %></p>
@@ -9,3 +14,7 @@
   <%= f.hidden_field :item_id, :value => @item.id %>
   <%= f.submit "カートに入れる" %>
 <% end %>
+
+</div>
+</div>
+</div>

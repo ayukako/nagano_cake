@@ -12,6 +12,7 @@
   <tbody>
   <% @cart_items.each do |cart_item| %>
       <tr>
+          <td><%= image_tag cart_item.item.image, size: "50x50" %></td>
         　<td><%= cart_item.item.name %></td>
           <td><%= cart_item.item.price %></td>
           <td>
