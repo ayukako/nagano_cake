@@ -13,7 +13,7 @@
     　<th><%= @order.customer.last_name + @order.customer.first_name %></th>
     　<th><%= @order.created_at %></th>
     　<th><%= @order.address %></th>
-    　<th><%= @order.payment %></th>
+    　<th><%= @order.payment_method_i18n %></th>
     　<th><%= form_with model: @order, url: admin_order_path, method: :patch, local: true do |f| %>
             <%= f.select :order_status, Order.order_statuses.keys, class: "order_status" %>
             <%= f.submit "更新" , class: "btn btn-outline-success" %>
@@ -32,11 +32,11 @@
 　  <% @order_details.each do |order_detail| %>
 　  <tr>
 　   <td><%= order_detail.item.name %></td>
-　   <td><%= order_detail.item.price %></td>
+　   <td><%= order_detail.item.with_tax_price %></td>
 　   <td><%= order_detail.amount %></td>
-　   <td><%= order_detail.item.price * order_detail.amount %></td>
+　   <td><%= order_detail.subtotal %></td>
 　  </tr>
-    <% @total = @total + order_detail.item.price * order_detail.amount %>
+    <% @total = @total + order_detail.subtotal %>
 　  <% end %>
 　 </tbody>
 

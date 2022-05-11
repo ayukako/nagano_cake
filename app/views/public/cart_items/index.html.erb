@@ -10,26 +10,37 @@
       <th>小計</th>
   </thead>
   <tbody>
+  <% @total = 0 %>
   <% @cart_items.each do |cart_item| %>
       <tr>
           <td><%= image_tag cart_item.item.image, size: "50x50" %></td>
         　<td><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
           <td>
             <%= form_with model: cart_item, url: public_cart_item_path(cart_item.id) do |f| %>
               <%= f.select :amount, *[1..10] %>
               <%= f.hidden_field :customer_id, :value => current_customer.id %>
               <%= f.hidden_field :item_id, :value => cart_item.item_id %>
               <%= f.submit "更新" %>
+
+              <% @total = @total + cart_item.subtotal %>
             <% end %>
           </td>
-          <td><%= cart_item.item.price*cart_item.amount %></td>
+          <td><%= cart_item.subtotal %></td>
           <td><%= link_to "削除する", public_cart_item_path(cart_item.id), method: :delete ,"data-confirm" => "本当に削除しますか?", class: "btn btn-sm btn-danger" %></td>
       </tr>
 
   <% end %>
   </tbody>
 </table>
+<table>
+  <tr>
+    <td>商品合計</td>
+    <td><%= @total %></td>
+  </tr>
+</table>
 
-      <%= link_to "買い物を続ける", public_items_path %>
-      <%= link_to "情報入力に進む",new_public_order_path %>
+
+<button type="button" class="btn btn-outline-primary"><%= link_to "買い物を続ける", public_homes_top_path %></button>
+<button type="button" class="btn btn-outline-primary"><%= link_to "情報入力に進む",new_public_order_path %></button>
+

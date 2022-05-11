@@ -1,12 +1,5 @@
   ja:
     enums:
-      order_details:
-        production_status:
-          waiting: "入金待ち"
-        　confirmation: "入金確認"
-        　making: "製作中"
-        　packing: "発送準備中"
-        　sended: "発送済"
       order:
         order_status:
         　waiting: "入金待ち"

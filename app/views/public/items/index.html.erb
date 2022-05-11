@@ -2,13 +2,13 @@
 
     <% @items.each do |item| %>
 
-    <%= image_tag item.image, size: "150x150" %>
-    <td>
       <%= link_to public_item_path(item) do %>
-        <%= item.name %>
+        <%=  image_tag item.image, size: "150x150" %>
       <% end %>
+    <td>
+        <%= item.name %>
     </td>
     <td>
-      <%= item.price %>
+      <%= item.with_tax_price %>
     </td>
     <% end %>

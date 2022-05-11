@@ -15,26 +15,31 @@
       <tr>
           <td><%= image_tag cart_item.item.image, size: "50x50" %></td>
         　<td><%= cart_item.item.name %></td>
-          <td><%= cart_item.item.price %></td>
+          <td><%= cart_item.item.with_tax_price %></td>
           <td><%= cart_item.amount %></td>
           <td><%= @total = @total + cart_item.subtotal %></td>
   <% end %>
   </tbody>
 </table>
 <table>
-  <thead>
-      <th>送料</th>
-      <th><%= @order.postage %></th>
-      <th>商品合計</th>
-      <th><%= @total %></th>
-      <th>請求額</th>
-      <th><%= @order.postage + @total %></th>
-  </thead>
   <tbody>
+    <tr>
+      <td>送料</td>
+      <td><%= @order.postage %></td>
+    </tr>
+    <tr>
+    <tr>
+      <td>商品合計</td>
+      <td><%= @total %></td>
+    </tr>
+      <td>請求額</td>
+      <td><%= @order.postage + @total %></td>
+    </tr>
+  </tbody>
 </table>
 
 <h4>支払い方法</h4>
-<%= @order.payment_method %>
+<%= @order.payment_method_i18n %>
 
 <h4>お届け先</h4>
 <%= @order.address %>

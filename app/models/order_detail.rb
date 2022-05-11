@@ -4,6 +4,8 @@ class OrderDetail < ApplicationRecord
   belongs_to :item
 
 
-  enum production_status: { waiting:0, confirmation:1, making:2, packing:3, sended:4 }
+def subtotal
+    item.with_tax_price * amount
+end
 
 end

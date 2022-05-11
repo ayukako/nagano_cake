@@ -1,16 +1,24 @@
+<div class= "row" >
+  <div class= "container">
+  <div class="col-sm-12 col-md-12 col-lg-12 px-5 px-sm-0 mx-auto">
+
+
 <h2>注文履歴一覧</h2>
 
 
-<table>
+<table class="table">
   <thead>
+    <tr>
       <th>注文日</th>
       <th>配送先</th>
       <th>注文商品</th>
       <th>支払い金額</th>
       <th>ステータス</th>
       <th>注文詳細</th>
+    </tr>
   </thead>
   <tbody>
+    <tr>
     <% @order.each do |order| %>
     　<th>
     　 <%= order.created_at.strftime('%Y/%m/%d') %></th>
@@ -19,6 +27,7 @@
   　   <% order.order_details.each do |order_detail| %>
           <%= order_detail.item.name %>
         <% end %>
+    </tr>
       </th>
     　<th><%= order.payment %></th>
     　<th><%= order.order_status %></th>

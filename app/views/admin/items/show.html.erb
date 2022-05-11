@@ -12,7 +12,9 @@
   <p><%= @item.introduction %></p>
   <h4>ジャンル</h4>
   <p><%= @item.genre.name %></p>
-  <h4>税抜価格</h4>
+  <h4>税込み価格</h4>
+  <p><%= @item.with_tax_price %></p>
+  <h6>(税抜価格)</h6>
   <p><%= @item.price %></p>
   <h4>販売ステータス</h4>
    <% if @item.is_active == true %>
@@ -22,4 +24,4 @@
    <% end %>
 
 
-  <%= link_to "編集する", edit_admin_item_path(@item.id) %>
+<button type="button" class="btn btn-outline-primary"><%= link_to "編集する", edit_admin_item_path(@item.id) %></button>
